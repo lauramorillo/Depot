@@ -1,0 +1,6 @@
+es:
+  number:
+    currency:
+      format:
+        unit: "€"
+        separator: ","
