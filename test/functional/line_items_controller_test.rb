@@ -2,7 +2,7 @@ require 'test_helper'
 
 class LineItemsControllerTest < ActionController::TestCase
   setup do
-    @line_item = line_items(:one)
+    @line_item = LineItem.new(:product_id => products(:ruby).id, :cart_id => carts(:one).id).save
   end
 
   test "should get index" do
