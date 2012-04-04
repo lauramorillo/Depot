@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.paginate :page => params[:page], :order => 'created_at desc', :per_page => 10
 
     respond_to do |format|
       format.html # index.html.erb
@@ -52,6 +52,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy current_cart
         session[:cart_id] = nil
+        Notifier.order_received(@order).deliver
         format.html { redirect_to store_url, :notice => 'Order was successfully created.' }
         format.json { render :json => @order, :status => :created, :location => @order }
       else
@@ -86,6 +87,16 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to orders_url }
       format.json { head :no_content }
+    end
+  end
+  
+  def ship
+    @order = Order.find(params[:id])
+    @order.ship_date = Time.now
+    @order.save
+    Notifier.order_shipped(@order).deliver
+    respond_to do |format|
+      format.html {redirect_to orders_url, :notice => 'Order shipped'}
     end
   end
 end
