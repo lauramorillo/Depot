@@ -48,6 +48,11 @@
 	display: inline;
 }
 
+.locale {
+	float: right;
+	margin: -0.25em 0.1em;
+}
+
 /* Global styles */
 
 #store #notice {
