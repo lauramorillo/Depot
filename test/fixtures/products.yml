@@ -5,13 +5,15 @@ one:
   description: MyText
   image_url: MyString
   price: 9.99
+  locale: "en"
 
 two:
   title: MyString
   description: MyText
   image_url: MyString
   price: 9.99
-  
+  locale: "en"
+    
 ruby:
   title: Programming Ruby 1.9
   description:
@@ -19,3 +21,4 @@ ruby:
     should add Ruby to yous toolbox.
   price: 49.50
   image_url: ruby.png
+  locale: "en"
