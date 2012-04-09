@@ -25,7 +25,7 @@
 	</div>
 	<div class="field">
 		<%= f.label :pay_type, t('.pay_type') %>
-		<%= f.select :pay_type, Order::PAYMENT_TYPES, :prompt => t('.pay_prompt_html') %>
+		<%= f.select :pay_type, Order::PAYMENT_TYPES.collect{|payment| [t("order.payment_types.#{payment}"), payment]}, :prompt => t('.pay_prompt_html') %>
 	</div>
 	<div class="actions">
 		<%= f.submit  t('.submit')%>

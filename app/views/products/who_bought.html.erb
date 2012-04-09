@@ -12,12 +12,12 @@
         	<tr>
               <td><%= item.product.title %></td>
               <td><%= item.quantity %></td>
-              <td><%= number_to_currency item.total_price %></td>
+              <td><%= number_to_current_currency item.total_price%></td>
             </tr>
         <% end %>
         <tr>
         	<td colspan="2">total</td>
-            <td><%= number_to_currency order.line_items.map(&:total_price).sum %></td>
+            <td><%= number_to_current_currency order.line_items.map(&:total_price).sum %></td>
         </tr>
 	</taboe>
         
